@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+
+/* NOTE: namespaces <=> folders? Example: this would go to Controllers/Site/HomeController.php
+ * 	Route::namespace('Site')->group( function () {
+ *		Route::get('/', 'HomeController@index');
+ *  })
+ **/
+
+// TODO: Would it be better to use strings instead of ::classes? this seems more robust.
+Route::get('/', HomeController::class);
+Route::get('login', [LoginController::class, 'index']);
+// Route::get('/login', 'LoginController');
+
+// Default values in this file
+// Route::get('/', function () {
+//     return view('welcome');
+// });
