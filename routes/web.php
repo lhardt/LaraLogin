@@ -24,10 +24,14 @@ use App\Http\Controllers\LoginController;
 
 // TODO: Would it be better to use strings instead of ::classes? this seems more robust.
 Route::get('/', HomeController::class);
-Route::get('login', [LoginController::class, 'index']);
+Auth::routes();
 // Route::get('/login', 'LoginController');
 
 // Default values in this file
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
